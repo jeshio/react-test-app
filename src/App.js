@@ -1,23 +1,35 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+  // const moneyState = useState(200)
+  // const currentMoney = moneyState[0]
+  // const setCurrentMoney = moneyState[1]
+
+  const [money, setMoney] = useState(200)
+  const [name, setName] = useState("Без имени")
+
+  function moneyUp() {
+    setMoney(money + 10)
+    setName("Богатей")
+  }
+
+  function askName() {
+    const userName = prompt()
+    setName(userName)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>{name}</h1>
+      <p>
+        Текст
+        <button onClick={moneyUp}>Поднять денег</button>
+        <button onClick={askName}>Указать имя</button>
+      </p>
+      <div>
+        Сколько денег? {money} Р
+      </div>
     </div>
   );
 }
